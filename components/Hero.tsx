@@ -1,11 +1,70 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
-const line1 = "Alignment";
-const line2 = "Artist";
+const line1 = "Product";
+const typewriterWords = ["Manager", "Designer", "Engineer", "Leader"];
+const typingSpeed = 80;
+const deletingSpeed = 50;
+const pauseAfterWord = 2000;
+const pauseAfterDelete = 400;
+
 const subtitle =
   "Bringing people together and getting shit done. Working out of Hamburg, Germany.";
+
+function TypewriterLine() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const currentWord = typewriterWords[wordIndex];
+
+  useEffect(() => {
+    if (!currentWord) return;
+
+    // Just finished typing: wait, then switch to deleting
+    if (!isDeleting && charIndex === currentWord.length) {
+      const t = setTimeout(() => setIsDeleting(true), pauseAfterWord);
+      return () => clearTimeout(t);
+    }
+
+    // Just finished deleting: brief pause, then next word
+    if (isDeleting && charIndex === 0) {
+      const t = setTimeout(() => {
+        setWordIndex((i) => (i + 1) % typewriterWords.length);
+        setIsDeleting(false);
+      }, pauseAfterDelete);
+      return () => clearTimeout(t);
+    }
+
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          setCharIndex((i) => i + 1);
+        } else {
+          setCharIndex((i) => i - 1);
+        }
+      },
+      isDeleting ? deletingSpeed : typingSpeed
+    );
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, wordIndex, currentWord]);
+
+  const displayText = currentWord.slice(0, charIndex);
+
+  return (
+    <span className="block text-[var(--accent)]">
+      {displayText}
+      <span
+        className="inline-block h-[0.9em] w-0.5 animate-pulse bg-[var(--accent)] align-middle"
+        style={{ marginLeft: "2px" }}
+        aria-hidden
+      />
+    </span>
+  );
+}
 
 export function Hero() {
   return (
@@ -31,7 +90,7 @@ export function Hero() {
           style={{ fontFamily: "var(--font-syne)" }}
         >
           <span className="block">{line1}</span>
-          <span className="block text-[var(--accent)]">{line2}</span>
+          <TypewriterLine />
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
