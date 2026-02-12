@@ -7,24 +7,35 @@ const groups = [
   {
     label: "Top skills",
     items: [
-      "Stablecoins",
-      "Next.js",
-      "Decentralized Applications (DApps)",
+      "Cross-functional Team Leadership",
+      "Strategic Planning",
+      "Supply Chain Software",
       "Product Management",
       "UX Design",
-      "Strategic Planning",
-      "Team Leadership",
+      "Agile Facilitation",
+      "Stakeholder Management",
+      "Communication",
+      "Stablecoins"
     ],
   },
   {
     label: "Tech & product",
     items: [
       "React",
-      "JavaScript",
+      "Typescript",
       "HTML & CSS",
       "Figma",
-      "Agile",
-      "Roadmap & Stakeholder Management",
+      "Next.js",
+      "Tailwind CSS",
+      "OpenAI Agents SDK",
+      "Cursor",
+      "Git",
+      "Vercel",
+      "Docker",
+      "AWS/Bedrock",
+      "Solidity",
+      "Python"
+
     ],
   },
   {
@@ -39,11 +50,13 @@ const groups = [
   {
     label: "Certifications",
     items: [
-      "Programming with JavaScript",
-      "Version Control",
-      "Building Generative AI Applications (Amazon Bedrock)",
+      "Building Generative AI Applications using Amazon Bedrock",
+      "AI Engineer Agentic Track by Ed Donner",
+      "Node and Version Control",
+      "Complete Web Design: from Figma to Webflow by Vako Shvili",
       "HTML and CSS in depth",
       "Advanced React",
+      
     ],
   },
 ];
