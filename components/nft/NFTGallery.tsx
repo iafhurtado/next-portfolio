@@ -62,12 +62,9 @@ export function NFTGallery() {
   return (
     <Section id="gallery" title="My NFT Collection" wide>
       <SectionItem>
-        <div className="space-y-8">
+        <div className="">
           {/* Header */}
-          <div className="text-center">
-            <h3 className="text-2xl font-semibold text-[var(--foreground)] sm:text-3xl">
-              My Digital Gallery
-            </h3>
+          <div className="text-left">
             <p className="mt-2 text-[var(--muted)]">
               {isLoading
                 ? "Loading collection..."
