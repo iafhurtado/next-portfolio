@@ -3,27 +3,19 @@
 import { useState } from "react";
 import { Section, SectionItem } from "@/components/Section";
 import { useWalletNFTs } from "@/hooks/useWalletNFTs";
-import { NFTGrid } from "./NFTGrid";
+import { NFTCarousel } from "./NFTCarousel";
 import { NFTModal } from "./NFTModal";
 import type { NFT } from "@/types/nft";
 
 export function NFTGallery() {
-  const {
-    nfts,
-    isLoading,
-    error,
-    hasMore,
-    totalCount,
-    loadMore,
-    refetch,
-    isFetching: isFetchingMore,
-  } = useWalletNFTs();
+  const { nfts, isLoading, error, totalCount, refetch } = useWalletNFTs();
+  const displayNfts = nfts.slice(0, 20);
   const [selectedNFT, setSelectedNFT] = useState<NFT | null>(null);
 
   // Error state
   if (error) {
     return (
-      <Section id="gallery" title="My NFT Collection" wide>
+      <Section id="gallery" title="My NFT Collection">
         <SectionItem>
           <div className="flex flex-col items-center justify-center rounded-2xl border border-red-500/30 bg-red-500/5 py-16 px-8 text-center">
             <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-500/20">
@@ -60,26 +52,22 @@ export function NFTGallery() {
 
   // Show gallery
   return (
-    <Section id="gallery" title="My NFT Collection" wide>
+    <Section id="gallery" title="My NFT Collection">
       <SectionItem>
         <div className="">
           {/* Header */}
           <div className="text-left">
-            <p className="mt-2 text-[var(--muted)]">
+            <p className="mt-2 text-sm text-[var(--muted)]">
               {isLoading
                 ? "Loading collection..."
-                : `Exploring ${totalCount} NFT${totalCount !== 1 ? "s" : ""} across Base`}
+                : `${totalCount} NFT${totalCount !== 1 ? "s" : ""} on Base`}
             </p>
           </div>
 
-          {/* Grid */}
-          <NFTGrid
-            nfts={nfts}
+          <NFTCarousel
+            nfts={displayNfts}
             onSelectNFT={setSelectedNFT}
             isLoading={isLoading}
-            hasMore={hasMore}
-            onLoadMore={loadMore}
-            isFetchingMore={isFetchingMore}
           />
         </div>
       </SectionItem>

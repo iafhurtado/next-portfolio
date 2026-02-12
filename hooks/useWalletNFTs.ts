@@ -33,8 +33,7 @@ export const GALLERY_WALLET_ADDRESSES: string[] =
         .map((a) => a.trim())
         .filter((a) => a.startsWith("0x"))
     : [
-        "0x9a5CacaA06F8bc83179F85EE61ae2c0Da81d7402",
-        "0xC863DFEE737C803c93aF4b6b27029294f6a56eB5",
+        "0x58E6d11a458dB5Bb49903f63D841bED8c5E90Fa9",
       ];
 
 /**
