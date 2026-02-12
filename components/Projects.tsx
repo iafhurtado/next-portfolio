@@ -4,6 +4,13 @@ import { Section, SectionItem } from "./Section";
 
 const projects = [
   {
+    name: "LOGSYS",
+    tag: "Agentic Supply Chain ·  OS",
+    description:
+      "A Logistics Operating System controlled via a conversation with agents specialized in the Logistic and Supply Chain industries. You want freight moving? Ask Bookr. You want compliance? Ask Compli.",
+    url: "https://logsys-web.vercel.app",
+  },
+  {
     name: "XOC Protocol",
     tag: "Stablecoin · Multi-chain",
     description:
