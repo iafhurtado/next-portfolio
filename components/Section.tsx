@@ -20,11 +20,13 @@ export function Section({
   title,
   children,
   className = "",
+  wide = false,
 }: {
   id: string;
   title?: string;
   children: React.ReactNode;
   className?: string;
+  wide?: boolean;
 }) {
   return (
     <motion.section
@@ -35,7 +37,7 @@ export function Section({
       viewport={{ once: true, margin: "-80px" }}
       variants={container}
     >
-      <div className="mx-auto max-w-4xl px-6">
+      <div className={`mx-auto px-6 ${wide ? "max-w-6xl" : "max-w-4xl"}`}>
         {title && (
           <motion.h2
             variants={item}

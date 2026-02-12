@@ -6,6 +6,7 @@ import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Education } from "@/components/Education";
 import { MintSection } from "@/components/nft/MintSection";
+import { NFTGallery } from "@/components/nft/NFTGallery";
 import { Contact } from "@/components/Contact";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
         {nftContractAddress && (
           <MintSection contractAddress={nftContractAddress} />
         )}
+        <NFTGallery />
         <Contact />
       </main>
     </>
