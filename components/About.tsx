@@ -3,7 +3,7 @@
 import { Section, SectionItem } from "./Section";
 
 const quote =
-  "Origen/Origin/Ankunft";
+  "Origen/Origin/Herkunft";
 const quoteAuthor = "— Hermosillo, Sonora, México";
 
 const about = [
