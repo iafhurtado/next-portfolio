@@ -5,7 +5,15 @@ import { useState, useEffect } from "react";
 import { MintModal } from "@/components/nft/MintModal";
 
 const line1 = "Product";
-const typewriterWords = ["Manager", "Designer", "Engineer", "Leader"];
+const typewriterWords = [
+  "Manager",
+  "Builder",
+  "Leader",
+  "Strategist",
+  "Innovator",
+  "Organizer",
+  "Facilitator"
+];
 const typingSpeed = 80;
 const deletingSpeed = 50;
 const pauseAfterWord = 2000;
@@ -113,27 +121,19 @@ export function Hero() {
           transition={{ delay: 0.6 }}
           className="mt-12 flex flex-wrap gap-4"
         >
-          <a
-            href="https://huggingface.co/spaces/Jaibooo/agents"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-medium text-[var(--background)] transition-transform hover:scale-105"
-          >
-            Meet my AI ego
-          </a>
           <button
             onClick={() => setIsMintModalOpen(true)}
-            className="rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-muted)]"
+            className="rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-medium text-[var(--background)] transition-transform hover:scale-105"
           >
             Mint Your Visit
           </button>
           <a
-            href="https://www.linkedin.com/in/ivan-flores-hurtado-09243b44"
+            href="https://huggingface.co/spaces/Jaibooo/agents"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-muted)]"
           >
-            LinkedIn
+            Meet my AI twin
           </a>
         </motion.div>
       </div>

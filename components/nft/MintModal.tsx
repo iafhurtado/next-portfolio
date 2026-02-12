@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MintButton } from "./MintButton";
-import { getContract } from "thirdweb";
+import { getContract, readContract } from "thirdweb";
 import { base } from "thirdweb/chains";
 import { client } from "@/lib/thirdweb";
-import { nextTokenIdToMint } from "thirdweb/extensions/erc721";
 
 interface MintModalProps {
   isOpen: boolean;
@@ -23,6 +22,41 @@ export function MintModal({
   const [mintSuccess, setMintSuccess] = useState(false);
   const [txHash, setTxHash] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
+
+  // Fetch total mints count function
+  const fetchTotalMints = async () => {
+    if (!isOpen) return;
+    
+    const addr = contractAddress && typeof contractAddress === 'string' ? String(contractAddress).trim() : "";
+    if (!addr || !addr.startsWith("0x") || addr.length !== 42) {
+      return;
+    }
+    try {
+      const contract = getContract({
+        client,
+        chain: base,
+        address: addr as `0x${string}`,
+      });
+      
+      // Call totalSupply(0) to get the total supply of token ID 0
+      const supply = await readContract({
+        contract,
+        method: {
+          name: "totalSupply",
+          type: "function",
+          inputs: [{ name: "_tokenId", type: "uint256" }],
+          outputs: [{ name: "", type: "uint256" }],
+          stateMutability: "view",
+        },
+        params: [BigInt(0)],
+      });
+      
+      setTotalMints(Number(supply));
+    } catch (error) {
+      console.error("Error fetching total mints:", error);
+    }
+  };
 
   useEffect(() => {
     if (!isOpen) {
@@ -30,58 +64,50 @@ export function MintModal({
       setMintSuccess(false);
       setTxHash(null);
       setError(null);
+      // Clear any pending timeouts
+      timeoutRefs.current.forEach(timeout => clearTimeout(timeout));
+      timeoutRefs.current = [];
       return;
     }
 
     // Fetch total mints count when modal opens
-    const fetchTotalMints = async () => {
-      const addr = contractAddress && typeof contractAddress === 'string' ? String(contractAddress).trim() : "";
-      if (!addr || !addr.startsWith("0x") || addr.length !== 42) {
-        return;
-      }
-      try {
-        const contract = getContract({
-          client,
-          chain: base,
-          address: addr as `0x${string}`,
-        });
-        const nextId = await nextTokenIdToMint({ contract });
-        setTotalMints(Number(nextId));
-      } catch (error) {
-        console.error("Error fetching total mints:", error);
-      }
-    };
-
     if (contractAddress) {
       fetchTotalMints();
     }
   }, [isOpen, contractAddress]);
 
+  // Refetch count when mint succeeds
+  useEffect(() => {
+    if (!mintSuccess || !isOpen) return;
+
+    // Try fetching immediately (in case it's already updated)
+    fetchTotalMints();
+    
+    // Retry after 3 seconds
+    const timeout1 = setTimeout(() => {
+      fetchTotalMints();
+    }, 3000);
+    timeoutRefs.current.push(timeout1);
+    
+    // Retry again after 5 seconds (in case the first retry was too early)
+    const timeout2 = setTimeout(() => {
+      fetchTotalMints();
+    }, 5000);
+    timeoutRefs.current.push(timeout2);
+
+    // Cleanup timeouts on unmount or when dependencies change
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      timeoutRefs.current = timeoutRefs.current.filter(t => t !== timeout1 && t !== timeout2);
+    };
+  }, [mintSuccess, isOpen, contractAddress]);
+
   const handleMintSuccess = (hash: string) => {
     setMintSuccess(true);
     setTxHash(hash);
     setError(null);
-    // Refresh total mints count
-    setTimeout(() => {
-      const fetchTotalMints = async () => {
-        const addr = contractAddress && typeof contractAddress === 'string' ? String(contractAddress).trim() : "";
-        if (!addr || !addr.startsWith("0x") || addr.length !== 42) {
-          return;
-        }
-        try {
-          const contract = getContract({
-            client,
-            chain: base,
-            address: addr as `0x${string}`,
-          });
-          const nextId = await nextTokenIdToMint({ contract });
-          setTotalMints(Number(nextId));
-        } catch (error) {
-          console.error("Error fetching total mints:", error);
-        }
-      };
-      fetchTotalMints();
-    }, 2000);
+    // The useEffect hook will handle refetching the count
   };
 
   const handleMintError = (errorMessage: string) => {
