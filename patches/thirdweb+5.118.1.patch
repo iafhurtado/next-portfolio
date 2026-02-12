@@ -1,0 +1,45 @@
+diff --git a/node_modules/thirdweb/dist/cjs/react/web/ui/ConnectWallet/Details.js b/node_modules/thirdweb/dist/cjs/react/web/ui/ConnectWallet/Details.js
+index f8593ec8..635524e0 100644
+--- a/node_modules/thirdweb/dist/cjs/react/web/ui/ConnectWallet/Details.js
++++ b/node_modules/thirdweb/dist/cjs/react/web/ui/ConnectWallet/Details.js
+@@ -226,7 +226,7 @@ function DetailsModal(props) {
+                                     alignItems: "center",
+                                     display: "flex",
+                                     gap: index_js_1.spacing.xxs,
+-                                }, children: [props.detailsModal?.connectedAccountName ? ((0, jsx_runtime_1.jsx)(text_js_1.Text, { color: "primaryText", size: "md", weight: 500, children: props.detailsModal.connectedAccountName })) : ((0, jsx_runtime_1.jsx)(text_js_1.Text, { color: "primaryText", size: "md", weight: 500, children: (0, jsx_runtime_1.jsx)(name_js_1.AccountName, { fallbackComponent: (0, jsx_runtime_1.jsx)(address_js_2.AccountAddress, { formatFn: address_js_1.shortenAddress }), loadingComponent: (0, jsx_runtime_1.jsx)(address_js_2.AccountAddress, { formatFn: address_js_1.shortenAddress }) }) })), (0, jsx_runtime_1.jsx)(buttons_js_1.IconButton, { children: (0, jsx_runtime_1.jsx)(CopyIcon_js_1.CopyIcon, { text: activeAccount?.address || "", tip: locale.copyAddress }) })] }), (0, jsx_runtime_1.jsx)(InAppWalletUserInfo, { client: client, locale: locale })] })] }), !hideAllButtons && ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(basic_js_1.Container, { px: "lg", children: (0, jsx_runtime_1.jsxs)(basic_js_1.Container, { className: "tw-highlight-buttons", style: {
++                                }, children: [props.detailsModal?.connectedAccountName ? ((0, jsx_runtime_1.jsx)(text_js_1.Text, { color: "primaryText", size: "md", weight: 500, children: props.detailsModal.connectedAccountName })) : ((0, jsx_runtime_1.jsx)(text_js_1.Text, { color: "primaryText", size: "md", weight: 500, children: (0, jsx_runtime_1.jsx)(name_js_1.AccountName, { fallbackComponent: (0, jsx_runtime_1.jsx)(address_js_2.AccountAddress, { formatFn: address_js_1.shortenAddress }), loadingComponent: (0, jsx_runtime_1.jsx)(address_js_2.AccountAddress, { formatFn: address_js_1.shortenAddress }) }) })), (0, jsx_runtime_1.jsx)("div", { style: { display: "inline-flex" }, children: (0, jsx_runtime_1.jsx)(CopyIcon_js_1.CopyIcon, { text: activeAccount?.address || "", tip: locale.copyAddress }) })] }), (0, jsx_runtime_1.jsx)(InAppWalletUserInfo, { client: client, locale: locale })] })] }), !hideAllButtons && ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(basic_js_1.Container, { px: "lg", children: (0, jsx_runtime_1.jsxs)(basic_js_1.Container, { className: "tw-highlight-buttons", style: {
+                                 display: "flex",
+                                 gap: index_js_1.spacing.xs,
+                             }, children: [!hideSendFunds && ((0, jsx_runtime_1.jsxs)(buttons_js_1.Button, { className: "tw-highlight-button__send", onClick: () => {
+diff --git a/node_modules/thirdweb/dist/esm/react/web/ui/ConnectWallet/Details.js b/node_modules/thirdweb/dist/esm/react/web/ui/ConnectWallet/Details.js
+index d5ace6f2..1d2974d9 100644
+--- a/node_modules/thirdweb/dist/esm/react/web/ui/ConnectWallet/Details.js
++++ b/node_modules/thirdweb/dist/esm/react/web/ui/ConnectWallet/Details.js
+@@ -214,7 +214,7 @@ export function DetailsModal(props) {
+                                     alignItems: "center",
+                                     display: "flex",
+                                     gap: spacing.xxs,
+-                                }, children: [props.detailsModal?.connectedAccountName ? (_jsx(Text, { color: "primaryText", size: "md", weight: 500, children: props.detailsModal.connectedAccountName })) : (_jsx(Text, { color: "primaryText", size: "md", weight: 500, children: _jsx(AccountName, { fallbackComponent: _jsx(AccountAddress, { formatFn: shortenAddress }), loadingComponent: _jsx(AccountAddress, { formatFn: shortenAddress }) }) })), _jsx(IconButton, { children: _jsx(CopyIcon, { text: activeAccount?.address || "", tip: locale.copyAddress }) })] }), _jsx(InAppWalletUserInfo, { client: client, locale: locale })] })] }), !hideAllButtons && (_jsxs(_Fragment, { children: [_jsx(Container, { px: "lg", children: _jsxs(Container, { className: "tw-highlight-buttons", style: {
++                                }, children: [props.detailsModal?.connectedAccountName ? (_jsx(Text, { color: "primaryText", size: "md", weight: 500, children: props.detailsModal.connectedAccountName })) : (_jsx(Text, { color: "primaryText", size: "md", weight: 500, children: _jsx(AccountName, { fallbackComponent: _jsx(AccountAddress, { formatFn: shortenAddress }), loadingComponent: _jsx(AccountAddress, { formatFn: shortenAddress }) }) })), _jsx("div", { style: { display: "inline-flex" }, children: _jsx(CopyIcon, { text: activeAccount?.address || "", tip: locale.copyAddress }) })] }), _jsx(InAppWalletUserInfo, { client: client, locale: locale })] })] }), !hideAllButtons && (_jsxs(_Fragment, { children: [_jsx(Container, { px: "lg", children: _jsxs(Container, { className: "tw-highlight-buttons", style: {
+                                 display: "flex",
+                                 gap: spacing.xs,
+                             }, children: [!hideSendFunds && (_jsxs(Button, { className: "tw-highlight-button__send", onClick: () => {
+diff --git a/node_modules/thirdweb/src/react/web/ui/ConnectWallet/Details.tsx b/node_modules/thirdweb/src/react/web/ui/ConnectWallet/Details.tsx
+index aa2f2121..59eea99f 100644
+--- a/node_modules/thirdweb/src/react/web/ui/ConnectWallet/Details.tsx
++++ b/node_modules/thirdweb/src/react/web/ui/ConnectWallet/Details.tsx
+@@ -556,12 +556,12 @@ export function DetailsModal(props: {
+                 />
+               </Text>
+             )}
+-            <IconButton>
++            <div style={{ display: "inline-flex" }}>
+               <CopyIcon
+                 text={activeAccount?.address || ""}
+                 tip={locale.copyAddress}
+               />
+-            </IconButton>
++            </div>
+           </div>
+           <InAppWalletUserInfo client={client} locale={locale} />
+         </Container>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Section, SectionItem } from "./Section";
+import { ElectricText } from "./ElectricText";
 
 const email = "iafhurtado@gmail.com";
 const linkedIn = "https://www.linkedin.com/in/ivan-flores-hurtado-09243b44";
@@ -10,7 +11,10 @@ export function Contact() {
     <Section id="contact" title="Contact">
       <SectionItem>
         <p className="text-lg text-[var(--muted)]">
-          Open to product leadership, DeFi, and building roles. Let’s connect.
+          Open to building the future agentic supply chains and critical logistics technology.
+        </p>
+        <p className="text-lg text-[var(--muted)]">
+          <ElectricText>Let's connect.</ElectricText>
         </p>
       </SectionItem>
       <SectionItem>
