@@ -6,6 +6,14 @@ import { ConnectButton } from "thirdweb/react";
 import { base } from "thirdweb/chains";
 import { client } from "@/lib/thirdweb";
 
+// Style for Connect Wallet button hover effect
+const connectButtonStyles = `
+  .connect-wallet-btn:hover {
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+`;
+
 const links = [
   { href: "#hero", label: "Home" },
   { href: "#about", label: "About" },
@@ -25,14 +33,16 @@ export function Nav() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[var(--background)]/80 backdrop-blur-md border-b border-[var(--border)]" : ""
-      }`}
-    >
+    <>
+      <style dangerouslySetInnerHTML={{ __html: connectButtonStyles }} />
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "bg-[var(--background)]/80 backdrop-blur-md border-b border-[var(--border)]" : ""
+        }`}
+      >
       <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
         <a
           href="#hero"
@@ -54,12 +64,23 @@ export function Nav() {
               </li>
             ))}
           </ul>
-          <div className="ml-4 [&_button]:rounded-full [&_button]:border [&_button]:border-[var(--border)] [&_button]:bg-transparent [&_button]:px-6 [&_button]:py-2 [&_button]:text-sm [&_button]:font-medium [&_button]:text-[var(--foreground)] [&_button]:transition-colors [&_button]:hover:border-[var(--accent)] [&_button]:hover:bg-[var(--accent-muted)]">
+          <div className="ml-4">
             <ConnectButton
               client={client}
               chain={base}
               connectButton={{
                 label: "Connect Wallet",
+                className: "connect-wallet-btn",
+                style: {
+                  backgroundColor: "transparent",
+                  color: "white",
+                  border: "1px solid white",
+                  borderRadius: "9999px",
+                  padding: "0.5rem 1.5rem",
+                  fontSize: "0.875rem",
+                  fontWeight: "500",
+                  transition: "all 0.2s ease",
+                },
               }}
               connectModal={{
                 size: "wide",
@@ -69,5 +90,6 @@ export function Nav() {
         </div>
       </nav>
     </motion.header>
+    </>
   );
 }

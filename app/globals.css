@@ -35,3 +35,11 @@ body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 64px 64px;
 }
+
+/* Fix thirdweb ConnectButton nested button issue - converts inner button to div-like behavior */
+[class*="tw-connect"] button button {
+  display: contents;
+}
+[class*="tw-connect"] button button > * {
+  display: inline-flex;
+}
