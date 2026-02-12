@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { MintModal } from "@/components/nft/MintModal";
 
 const line1 = "Product";
 const typewriterWords = ["Manager", "Designer", "Engineer", "Leader"];
@@ -67,6 +68,12 @@ function TypewriterLine() {
 }
 
 export function Hero() {
+  const [isMintModalOpen, setIsMintModalOpen] = useState(false);
+  // Get contract address from environment variable, fallback to hardcoded address
+  const nftContractAddress =
+    process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS ||
+    "0x686c8789775e2c183dD9f87ff2652476fC21867a";
+
   return (
     <section
       id="hero"
@@ -114,6 +121,12 @@ export function Hero() {
           >
             Meet my AI ego
           </a>
+          <button
+            onClick={() => setIsMintModalOpen(true)}
+            className="rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-muted)]"
+          >
+            Mint Your Visit
+          </button>
           <a
             href="https://www.linkedin.com/in/ivan-flores-hurtado-09243b44"
             target="_blank"
@@ -140,6 +153,13 @@ export function Hero() {
           </span>
         </a>
       </motion.div>
+
+      {/* Mint Modal */}
+      <MintModal
+        isOpen={isMintModalOpen}
+        onClose={() => setIsMintModalOpen(false)}
+        contractAddress={nftContractAddress}
+      />
     </section>
   );
 }

@@ -5,9 +5,13 @@ import { Skills } from "@/components/Skills";
 import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Education } from "@/components/Education";
+import { MintSection } from "@/components/nft/MintSection";
 import { Contact } from "@/components/Contact";
 
 export default function Home() {
+  const nftContractAddress =
+    process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS || "";
+
   return (
     <>
       <Nav />
@@ -18,6 +22,9 @@ export default function Home() {
         <Experience />
         <Projects />
         <Education />
+        {nftContractAddress && (
+          <MintSection contractAddress={nftContractAddress} />
+        )}
         <Contact />
       </main>
     </>

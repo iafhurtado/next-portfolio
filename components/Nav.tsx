@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { ConnectButton } from "thirdweb/react";
+import { base } from "thirdweb/chains";
+import { client } from "@/lib/thirdweb";
 
 const links = [
   { href: "#hero", label: "Home" },
@@ -38,18 +41,32 @@ export function Nav() {
         >
           Ivan F.H.
         </a>
-        <ul className="flex items-center gap-8">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-8">
+          <ul className="flex items-center gap-8">
+            {links.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="ml-4 [&_button]:rounded-full [&_button]:border [&_button]:border-[var(--border)] [&_button]:bg-transparent [&_button]:px-6 [&_button]:py-2 [&_button]:text-sm [&_button]:font-medium [&_button]:text-[var(--foreground)] [&_button]:transition-colors [&_button]:hover:border-[var(--accent)] [&_button]:hover:bg-[var(--accent-muted)]">
+            <ConnectButton
+              client={client}
+              chain={base}
+              connectButton={{
+                label: "Connect Wallet",
+              }}
+              connectModal={{
+                size: "wide",
+              }}
+            />
+          </div>
+        </div>
       </nav>
     </motion.header>
   );
