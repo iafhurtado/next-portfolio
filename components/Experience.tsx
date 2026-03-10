@@ -4,6 +4,14 @@ import { Section, SectionItem } from "./Section";
 
 const jobs = [
   {
+    company: "OG Bombs Europe",
+    role: "Founder & Operator",
+    period: "Feb 2026 – Present",
+    location: "Hamburg, Deutschland",
+    summary:
+      "Building and operating OG Bombs Europe. Designing and shipping the full product stack using Lovable — including the storefront, ops dashboard, booking flow, etc. End-to-end ownership of product, brand, and go-to-market by leveraging AI.",
+  },
+  {
     company: "Palletways Deutschland GmbH",
     role: "Group Product Manager",
     period: "Oct 2022 – Present",

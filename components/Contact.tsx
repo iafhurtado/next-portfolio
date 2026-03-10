@@ -5,6 +5,8 @@ import { ElectricText } from "./ElectricText";
 
 const email = "iafhurtado@gmail.com";
 const linkedIn = "https://www.linkedin.com/in/ivan-flores-hurtado-09243b44";
+const lovable = "https://lovable.dev/@jaibo";
+const github = "https://github.com/iafhurtado/";
 
 export function Contact() {
   return (
@@ -29,9 +31,25 @@ export function Contact() {
             href={linkedIn}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)]"
+            className="btn-glow-linkedin inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium text-[var(--foreground)] transition-all duration-300 hover:border-[#0a66c2]"
           >
             LinkedIn
+          </a>
+          <a
+            href={lovable}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-glow-lovable inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium text-[var(--foreground)] transition-all duration-300"
+          >
+            Lovable
+          </a>
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-glow-github inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium text-[var(--foreground)] transition-all duration-300"
+          >
+            GitHub
           </a>
         </div>
       </SectionItem>

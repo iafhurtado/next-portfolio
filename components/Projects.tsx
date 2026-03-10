@@ -4,6 +4,13 @@ import { Section, SectionItem } from "./Section";
 
 const projects = [
   {
+    name: "OG Bombs Europe",
+    tag: "E-COMMERCE · PRODUCT BUILDER",
+    description:
+      "Building and operating OG Bombs EU with a fully Lovable-powered product stack, owning the backend of all logistics and fulfillment operations.",
+    url: "https://og-bombs.eu/",
+  },
+  {
     name: "LOGSYS",
     tag: "Agentic Supply Chain ·  OS",
     description:
