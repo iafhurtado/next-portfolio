@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { ConnectButton } from "thirdweb/react";
 import { base } from "thirdweb/chains";
 import { client } from "@/lib/thirdweb";
@@ -14,14 +15,15 @@ const connectButtonStyles = `
   }
 `;
 
+// Root-relative so the links also work from the blog and case study pages.
 const links = [
-  { href: "#hero", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#education", label: "Education" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#automation", label: "Automation" },
+  { href: "/#about", label: "About" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#gallery", label: "Gallery" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Nav() {
@@ -73,19 +75,19 @@ export function Nav() {
           scrolled ? "bg-[var(--background)]/80 backdrop-blur-md border-b border-[var(--border)]" : ""
         }`}
       >
-        <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-          <a
-            href="#hero"
+        <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+          <Link
+            href="/"
             className="font-display text-lg font-semibold text-[var(--foreground)]"
             style={{ fontFamily: "var(--font-syne)" }}
             onClick={handleLinkClick}
           >
             Ivan F.H.
-          </a>
+          </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <ul className="flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
+            <ul className="flex items-center gap-6">
               {links.map((link) => (
                 <li key={link.href}>
                   <a
@@ -124,7 +126,7 @@ export function Nav() {
 
           {/* Hamburger Menu Button (Mobile Only) */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none"
+            className="lg:hidden flex flex-col gap-1.5 p-2 focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -154,7 +156,7 @@ export function Nav() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden mobile-menu overflow-hidden bg-[var(--background)]/95 backdrop-blur-md border-t border-[var(--border)]"
+              className="lg:hidden mobile-menu overflow-hidden bg-[var(--background)]/95 backdrop-blur-md border-t border-[var(--border)]"
             >
               <motion.ul
                 initial={{ y: -20 }}

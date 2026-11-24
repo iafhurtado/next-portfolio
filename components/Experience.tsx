@@ -1,15 +1,34 @@
 "use client";
 
+import Link from "next/link";
 import { Section, SectionItem } from "./Section";
+import { caseStudyPath } from "@/lib/automation";
 
-const jobs = [
+type Job = {
+  company: string;
+  role: string;
+  period: string;
+  location: string;
+  summary: string;
+  highlights?: string[];
+  link?: { href: string; label: string };
+};
+
+const jobs: Job[] = [
   {
     company: "OG Bombs Europe",
     role: "Founder & Operator",
     period: "Feb 2026 – Present",
-    location: "Hamburg, Deutschland",
+    location: "Hamburg, Germany",
     summary:
-      "Building and operating OG Bombs Europe. Designing and shipping the full product stack using Lovable — including the storefront, ops dashboard, booking flow, etc. End-to-end ownership of product, brand, and go-to-market by leveraging AI.",
+      "Founder of an import and e-commerce business for Mexican spice bombs. I built the product stack on Lovable and Supabase (storefront, ops dashboard, booking flow) and run business development, sales follow-up and cold outreach on n8n. A multi-agent system sources, qualifies and enriches leads into Pipedrive and drafts the first message in German, Spanish or English. A person reviews and sends every one.",
+    highlights: [
+      "Designed and operate 33 n8n workflows: an orchestrator with Prospecting, RevOps and SDR sub-agents, deterministic filters and a gated AI judge.",
+      "1,204 prospects tracked and 523 logged prospecting runs, each with its rejection reasons, across 4,900+ executions.",
+      "Rolled the system out to Mexico for the producer's sales team: localised agents, Odoo CRM sync and a re-runnable migration to production.",
+      "Automated the follow-through: a daily sample follow-up engine, Instagram DMs logged to Pipedrive, and a weekly GA4 watchdog with nine alert rules.",
+    ],
+    link: { href: caseStudyPath, label: "Read the n8n case study" },
   },
   {
     company: "Palletways Deutschland GmbH",
@@ -81,9 +100,9 @@ export function Experience() {
       <div className="relative space-y-0">
         {/* vertical line */}
         <div className="absolute left-3 top-0 bottom-0 w-px bg-[var(--border)] md:left-6" />
-        {jobs.map((job, i) => (
+        {jobs.map((job) => (
           <SectionItem key={`${job.company}-${job.period}`}>
-            <div className="relative flex gap-6 pb-12 pl-10 md:pl-12 last:pb-0">
+            <div className="relative flex gap-6 pb-10 pl-10 md:pl-12">
               <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-[var(--accent)] md:left-4" />
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -99,6 +118,30 @@ export function Experience() {
                 <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
                   {job.summary}
                 </p>
+                {job.highlights && (
+                  <ul className="mt-3 space-y-2">
+                    {job.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="flex gap-3 text-sm leading-relaxed text-[var(--foreground)]"
+                      >
+                        <span
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]"
+                          aria-hidden
+                        />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {job.link && (
+                  <Link
+                    href={job.link.href}
+                    className="mt-4 inline-block text-sm font-medium text-[var(--accent)] underline-offset-4 hover:underline"
+                  >
+                    {job.link.label} →
+                  </Link>
+                )}
               </div>
             </div>
           </SectionItem>

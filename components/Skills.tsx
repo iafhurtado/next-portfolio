@@ -39,6 +39,20 @@ const groups = [
     ],
   },
   {
+    label: "Automation & agents",
+    items: [
+      "n8n",
+      "AI agents & sub-workflows",
+      "MCP",
+      "OpenRouter",
+      "Firecrawl",
+      "Pipedrive",
+      "Odoo",
+      "Supabase",
+      "GA4",
+    ],
+  },
+  {
     label: "Languages",
     items: [
       "Spanish (Native)",

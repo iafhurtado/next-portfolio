@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { MintModal } from "@/components/nft/MintModal";
+import { caseStudyPath } from "@/lib/automation";
 
 const line1 = "Product";
 const typewriterWords = [
@@ -12,7 +14,8 @@ const typewriterWords = [
   "Strategist",
   "Innovator",
   "Organizer",
-  "Facilitator"
+  "Facilitator",
+  "Automator"
 ];
 const typingSpeed = 80;
 const deletingSpeed = 50;
@@ -20,7 +23,7 @@ const pauseAfterWord = 2000;
 const pauseAfterDelete = 400;
 
 const subtitle =
-  "Bringing people together and getting shit done. Working out of Hamburg, Germany.";
+  "I lead enterprise logistics products and run a multi-agent sales system on n8n. Bringing people together and getting shit done, out of Hamburg, Germany.";
 
 function TypewriterLine() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -95,7 +98,7 @@ export function Hero() {
           className="mb-4 text-sm uppercase tracking-widest text-[var(--accent)]"
           style={{ fontFamily: "var(--font-syne)" }}
         >
-          Ivan Flores Hurtado
+          Ivan Flores Hurtado · Product Leader &amp; Automation Builder
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -111,7 +114,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-xl text-lg text-[var(--muted)] sm:text-xl"
+          className="max-w-2xl text-lg text-[var(--muted)] sm:text-xl"
         >
           {subtitle}
         </motion.p>
@@ -121,9 +124,15 @@ export function Hero() {
           transition={{ delay: 0.6 }}
           className="mt-12 flex flex-wrap gap-4"
         >
+          <Link
+            href={caseStudyPath}
+            className="rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-medium text-[var(--background)] transition-transform hover:scale-105"
+          >
+            See my n8n system
+          </Link>
           <button
             onClick={() => setIsMintModalOpen(true)}
-            className="rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-medium text-[var(--background)] transition-transform hover:scale-105"
+            className="rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-muted)]"
           >
             Mint Your Visit
           </button>
@@ -144,7 +153,7 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <a
-          href="#about"
+          href="#automation"
           className="flex flex-col items-center gap-2 text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
         >
           <span className="text-xs uppercase tracking-widest">Scroll</span>

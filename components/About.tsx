@@ -34,9 +34,9 @@ export function About() {
           Professional focus
         </p>
         <p className="mt-2 text-[var(--muted)]">
-          Product Management · UX Design · Software Development · Strategic
-          Planning · Team Leadership · Supply Chain & Logistics · DeFi &
-          Stablecoins
+          Product Management · Workflow Automation &amp; AI Agents · Software
+          Development · UX Design · Strategic Planning · Team Leadership ·
+          Supply Chain &amp; Logistics · DeFi &amp; Stablecoins
         </p>
       </SectionItem>
     </Section>
