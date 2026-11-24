@@ -102,3 +102,42 @@ body {
     0 0 30px rgba(255, 255, 255, 0.4),
     0 0 45px rgba(255, 255, 255, 0.3);
 }
+
+/* Workflow canvas (automation case study) */
+@keyframes canvasEdgeFlow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.canvas-edge-flow {
+  stroke: #f59e0b;
+  stroke-dasharray: 6 6;
+  animation: canvasEdgeFlow 0.6s linear infinite;
+}
+
+@keyframes canvasNodePulse {
+  0%, 100% {
+    stroke-opacity: 0.15;
+  }
+  50% {
+    stroke-opacity: 0.55;
+  }
+}
+
+.canvas-node-pulse {
+  animation: canvasNodePulse 0.65s ease-in-out infinite;
+}
+
+.canvas-node:hover > rect:last-of-type,
+.canvas-node:focus-visible > rect:last-of-type {
+  stroke: #f59e0b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas-edge-flow,
+  .canvas-node-pulse,
+  .electric-text {
+    animation: none;
+  }
+}

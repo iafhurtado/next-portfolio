@@ -21,13 +21,13 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Ivan Flores Hurtado | Product Leader & DeFi Builder",
+  title: "Ivan Flores Hurtado | Product Leader & Automation Builder",
   description:
-    "Product Leader driving product portals and DeFi initiatives. Expert in product management, UX design, and building decentralized financial solutions. Hamburg, Germany.",
+    "Product leader for enterprise logistics platforms who builds and runs multi-agent automation on n8n. Product management, developer empathy and hands-on code. Hamburg, Germany.",
   openGraph: {
-    title: "Ivan Flores Hurtado | Product Leader & DeFi Builder",
+    title: "Ivan Flores Hurtado | Product Leader & Automation Builder",
     description:
-      "Product Leader · DeFi · Stablecoins · Next.js · Strategic product & team leadership.",
+      "Enterprise product management · n8n and AI agents in production · Logistics · DeFi.",
   },
 };
 

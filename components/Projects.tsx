@@ -1,13 +1,21 @@
 "use client";
 
 import { Section, SectionItem } from "./Section";
+import { caseStudyPath } from "@/lib/automation";
 
 const projects = [
+  {
+    name: "n8n Business Development System",
+    tag: "Automation · AI agents · Case study",
+    description:
+      "A multi-agent sales pipeline on n8n: an orchestrator, three sub-agents, deterministic guardrails and a human who sends every message. Running in the EU and cloned to Mexico.",
+    url: caseStudyPath,
+  },
   {
     name: "OG Bombs Europe",
     tag: "E-COMMERCE · PRODUCT BUILDER",
     description:
-      "Building and operating OG Bombs EU with a fully Lovable-powered product stack, owning the backend of all logistics and fulfillment operations.",
+      "Building and operating OG Bombs EU with a Lovable-powered product stack and n8n automation behind sales, owning the backend of all logistics and fulfillment operations.",
     url: "https://og-bombs.eu/",
   },
   {

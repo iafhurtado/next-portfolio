@@ -13,10 +13,10 @@ export function Contact() {
     <Section id="contact" title="Contact">
       <SectionItem>
         <p className="text-lg text-[var(--muted)]">
-          Open to building the future agentic supply chains and critical logistics technology.
+          Open to building automation platforms, agentic supply chains and critical logistics technology.
         </p>
         <p className="text-lg text-[var(--muted)]">
-          <ElectricText>Let's connect.</ElectricText>
+          <ElectricText>Let&apos;s connect.</ElectricText>
         </p>
       </SectionItem>
       <SectionItem>
